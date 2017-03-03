@@ -7,8 +7,8 @@
 //
 
 #import "ViewController.h"
-
-@interface ViewController ()
+#import "LTStarView.h"
+@interface ViewController ()<LTStarViewDelegate>
 
 @end
 
@@ -16,9 +16,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    LTStarView * starView = [[LTStarView alloc]initWithFrame:CGRectMake(100, 100, 104, 20) numberOfStars:5 isVariable:YES];
+    starView.starType = StatType_TheWholeStar;//整颗星
+    starView.delegate = self;
+    [self.view addSubview:starView];
 }
-
+//#pragma mark - LTStarViewDelegate
+//- (void)starView:(LTStarView *)view score:(CGFloat)score
+//{
+//    NSLog(@"分数  %.2f",score);
+//    
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
